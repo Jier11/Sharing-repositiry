@@ -1,0 +1,24 @@
+import sys
+
+n = int(sys.argv[1])
+
+
+message = input()
+
+
+message = message.upper()
+
+
+encoded_message = ""
+
+for char in message:
+  if char.isalpha():
+    encoded_char = chr((ord(char) - 65 + n) % 26 + 65)
+    encoded_message += encoded_char
+
+
+for i in range(0, len(encoded_message), 5):
+  block = encoded_message[i:i+5]
+  print(block, end=" ")
+  if (i+5) % 50 == 0:
+    print()
